@@ -2,7 +2,10 @@ import os
 import time
 
 import numpy as np
-import tensorflow as tf
+#import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 
 import helperfns
 import networkarch as net
@@ -304,6 +307,7 @@ def main_exp(params):
     if not os.path.exists(params['folder_name']):
         os.makedirs(params['folder_name'])
 
+    #tf.random.set_seed(params['seed'])
     tf.set_random_seed(params['seed'])
     np.random.seed(params['seed'])
     # data is num_steps x num_examples x n but load flattened version (matrix instead of tensor)
